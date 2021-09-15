@@ -1,0 +1,513 @@
+const binary = (decimal) => {
+   binaryNum = []
+
+   for (let i = 0; i < decimal.length; i++) {
+      binaryNum.push(decimal % 2)
+
+   }
+}
+
+function largestSwap(num) {
+   let newNum = num.toString()
+   let revNum = parseInt(newNum.slice(1) + newNum.slice(0, 1))
+   return (num < revNum) ? "False" : "True"
+}
+
+// largestSwap(13)
+// largestSwap(54)
+// console.log(largestSwap(14)) //➞ false
+// console.log(largestSwap(53)) //➞ true
+// console.log(largestSwap(99)) //➞ true
+
+function descendingOrder(n) {
+   return parseInt(n.toString().split("").sort(function (a, b) {
+      return b - a
+   }).join(""))
+}
+
+// console.log(descendingOrder(843972))
+
+function duplicateCount(text) {
+   let notDupArr = []
+   let dupArr = []
+   const textArr = text.toLowerCase().split("")
+
+   for (let i = 0; i < textArr.length; i++) {
+      notDupArr.includes(textArr[i]) ? dupArr.push(textArr[i]) : notDupArr.push(textArr[i])
+   }
+
+   // remove duplicates -  using Set
+   const dupCount = Array.from(new Set(dupArr))
+
+   // remove duplicates -  using filter
+   // const dupCount = dupArr.filter((item, index) => dupArr.indexOf(item) === index)
+
+   // remove duplicates -  using reduce
+   // const dupCount = dupArr.reduce((unique, item) =>{
+
+   // })
+
+   return dupCount.length
+}
+
+// console.log(duplicateCount("Indivisibilities"))
+// console.log(duplicateCount("sillies"))
+
+const solution = (number) => {
+   let mulArr = []
+   // create while loop counting down from "number" and add all multiples of 3 or 5 to mulArr
+   n = number - 1;
+   while (n > 0) {
+      n % 3 === 0 || n % 5 === 0 ? mulArr.push(n) + n-- : n--
+   }
+   // add all numbers in mulArr
+   return mulArr.reduce((total, acc) => total + acc)
+}
+
+// console.log(solution(10))
+
+const digital_root = (n) => {
+   let numArr = n.toString().split('')
+   if (numArr.length < 2) {
+      return n
+   } else
+      n = numArr.reduce((total, acc) => parseInt(total) + parseInt(acc))
+   return digital_root(n)
+}
+
+// console.log(digital_root(942), "is the final answer")
+// console.log(digital_root(132189), "is the final answer")
+// digital_root(942)
+// console.log(digital_root(16))
+
+// really clean version of ^^^^
+// function digital_root(n) {
+//    return (n - 1) % 9 + 1;
+// }
+
+function isIsogram(str) {
+   // convert str to lowercase and to an array:
+   let strArr = str.toLowerCase().split('')
+   for (let i = 0; i < strArr.length; i++) {
+
+   }
+}
+
+const arrayDiff = (a, b) => {
+   let diffs = []
+   for (let i = 0; i < a.length; i++) {
+      b.includes(a[i]) ? null : diffs.push(a[i])
+   }
+   return diffs
+}
+
+// const a = [1, 3, 1, 2, 3, 7, 6]
+// const b = [3, 7]
+// expect --> [1,1,2,6]
+
+// console.log(arrayDiff(a,b),'is the answer')
+
+
+const humanReadable = (seconds) => {
+   return ('0' + Math.floor(seconds / 3600)).slice(-2) + ":" + ('0' + Math.floor(seconds % 3600 / 60)).slice(-2) + ":" + ('0' + (seconds % 3600 % 60)).slice(-2)
+}
+
+// let seconds= 8187
+// console.log("hour:", Math.floor(seconds/3600))
+// console.log("min:", Math.floor(seconds%3600/60))
+// // console.log("sec:", Math.floor((seconds%3600)/3600))
+// console.log("sec:", ((seconds%3600)%60))
+// console.log("seconds:", seconds%)
+
+// -->02:16:27
+
+// console.log(humanReadable(7442))
+// --> 01:
+// console.log(humanReadable(63))
+
+
+const vendorPrices = [".48", ".05", ".04", ".99"]
+
+// for(let price of vendorPrices){
+//   price="$"+price.padStart(4,0);
+//   console.log(price);
+// }
+
+const naiveSearch = (long, short) => {
+   let matches = 0;
+   for (let i = 0; i < long.length; i++) {
+      for (let j = 0; j < short.length; j++) {
+         if (long[i + j] !== short[j]) break;
+         // check to see if you are at the last character of the short string
+         if (j === short.length - 1) matches++
+      }
+   }
+   return matches
+}
+
+// console.log(naiveSearch('lorie loled', 'lo' ))
+
+
+
+// Sorting algorithms
+
+// Valid Parentheses:
+
+const toCamelCase = (str) => {
+   // convert str to array, using "-" or "_" as separator (use regex)
+   const strArr = str.split(/\-|_/)
+   // loop through array, capitalizing the first letter of each entry besides the first (start i at 1)
+   for (let i = 1; i <= strArr.length; i++) {
+      console.log(strArr[i].charAt(0))
+      // strArr[i].toUpperCase()
+   }
+   // join array back to string
+   // return convertedStr
+   return
+}
+
+// console.log(toCamelCase("the-stealth_warrior-is_not_the-best"))
+
+
+function funWithAnagrams(text) {
+   // Convert each string in array to its own sub-array, making a new array of arrays.
+   const subArr = text.map(x => x.split(""))
+   // console.log(text)
+   // console.log(subArr[0].length)
+   for (let i = 0; i < subArr.length; i++) {
+      // console.log("i =",i,subArr[i].length)
+      // console.log(subArr[i+1])
+      if (subArr[i].length === 8) {
+         // if (subArr[i].length == (subArr[i + 1]).length) {
+         console.log(subArr[i], text[i], "even")
+      }
+   }
+
+   // Compare length of sub-arrays at index i and i+1
+   // If length is equal, compare each letter in sub-array (.includes()?). Else, break.
+   // If there is a letter in one sub-array that isn't in the other, break. No need to keep looping.
+   // If they match, then they are anagrams and second string should be removed from the original array.
+   // Return original array, which has now had anagrams removed
+}
+
+const text = ["code", "aaagmnrs", "anagrams", "doce"]
+
+
+// funWithAnagrams(text)
+// console.log(funWithAnagrams(text))
+
+class Student {
+   constructor(firstName, lastName, year) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.grade = year;
+   }
+}
+let joe = new Student("Joe", "Nosefgf", 2)
+
+
+// let s = "racecar"
+// // class Solution {
+// function solve(s) {
+//    //         console.log(s)
+//    let sArr = s.split("");
+//    // console.log("test:",sArr.reverse().join(""))
+//    if (sArr.reverse().join("") === s) return true;
+//    return false;
+// }
+// }
+
+// console.log(solve(s))
+// let n =11;
+function solve(n) {
+   let collatz = [n]
+   while (n !== 1) {
+      if (n % 2 === 0) {
+         n = n / 2;
+      } else {
+         n = 3 * n + 1;
+      }
+      collatz.push(n)
+   }
+   return collatz.length
+}
+// console.log(solve(11))
+
+// function solve(nums) {
+//    let ns =nums.sort(function(a,b){return a-b});
+//    console.log(ns)
+//    let dif=0,temp;
+//    for(let i = 0;i<ns.length-1;i++){
+//       temp = ns[i+1]-ns[i]
+//       // console.log('dif:',dif,'temp:',temp)
+//       dif = Math.max(dif,temp)
+//    }
+//    return dif;
+// }
+// let nums = [4, 1, 2, 8, 9, 10]
+// console.log(solve(nums))
+
+// function solve(s) {
+//    let stringHash = {};
+//    for (let i = 0; i < s.length; i++) {
+//       if (!stringHash[s[i]]) {
+//          stringHash[s[i]] = 1;
+//       }
+//    }
+//    if (Object.keys(stringHash).length === s.length) return true;
+//    return false;
+// }
+// const s = "abcee" // true
+// console.log(solve(s))
+
+function solve(intervals, point) {
+   let count = 0;
+   // loop through intervals. if point is greater than interval i and smaller than interval i+1, increment count
+   for (let i = 0; i < intervals.length; i++) {
+      console.log('first', intervals[i][0])
+      console.log('second', intervals[i][1])
+      if (intervals[i][0] <= point && intervals[i][1] >= point) {
+         console.log('increment!')
+         count++;
+      }
+   }
+   return count;
+}
+const s = [
+   [1, 5],
+   [3, 9],
+   [4, 8],
+   [10, 13]
+]
+// console.log('solution:', solve(s, 4))
+
+
+
+
+
+class LLNode {
+   constructor(val, next = null) {
+      this.val = val
+      this.next = next
+   }
+}
+
+
+function solve(a, b) {
+   let mergedArr = [];
+   let counterA = 0;
+   let counterB = 0;
+   if (a.length > b.length) {
+
+   }
+
+   // loop through list A - this will only run as many times as A has entries
+   for (let i = 0; i < a.length; i++) {
+      // compare the first item in each list & push the larger of each index
+      mergedArr.push(Math.min(a[counterA], b[counterB]))
+      // if the item from a is bigger, increment counterA
+      if (a[counterA] < b[counterB]) {
+         // console.log('a:', a[counterA], "b: ", b[counterB])
+         counterA++;
+         console.log(counterA, counterB)
+         // otherwise, increment counterB
+      } else console.log("B increments"), counterB++;
+      // if either 
+      // if a is shorter than b, the remaining values in B need to be added to Array
+      // if a is longer than b, the remaining values in A need to be added to Array
+
+   }
+
+   return mergedArr;
+}
+let a = [5, 10, 15];
+let b = [3, 6, 9, 13, 18];
+let c = a.concat(b).sort(function (a, b) {
+   return a - b
+})
+// console.log(c)
+// console.log(solve(a,b))
+
+function solve(n) {
+   let count = 0;
+   const nConverted = n.toString(2)
+   for (let i in nConverted) {
+      if (nConverted[i] == 1) count++;
+   }
+   return count;
+}
+// console.log((4).toString(2))
+// console.log(solve(4))
+
+let nodes = [1, 0, 0]
+// function solve(nodes) {
+// return (parseInt(nodes.join(""),2))
+// }
+// console.log(solve(nodes))
+
+// let s2 = "hga92bcbXagh"
+let s2 = "hg3ag74g"
+
+function solve(s2) {
+   let sFiltered = s2.split("").filter(val => {
+      return /[a-z]/.test(val);
+   })
+   console.log(sFiltered)
+   let start = 0;
+   let end = sFiltered.length - 1;
+   const mid = Math.floor(sFiltered.length / 2);
+   console.log('mid:', mid)
+   while (start <= end) {
+      console.log(start, end)
+
+      console.log(sFiltered[start], sFiltered[end])
+      if (sFiltered[start] !== sFiltered[end]) {
+         console.log(sFiltered[start], "doesn't match", sFiltered[end])
+         return false;
+      }
+      start++;
+      end--;
+   }
+   console.log('end')
+   return true;
+}
+// console.log(solve(s2))
+const num = 123
+
+function solve(num) {
+   let sum = 0;
+   while (num > 0) {
+      console.log('sum', sum, 'num', num)
+      sum += num % 10;
+      num = Math.trunc(num / 10)
+   }
+   return sum;
+}
+// console.log(Math.floor(Math.log10(5400)))
+// console.log(Math.trunc(278/10))
+// console.log('solution:',solve(num))
+let p = "aaaaaabbbccccaaaaddf"
+
+function solve(p) {
+   let newArr = [];
+   let sArr = p.split("")
+   let noDupes = sArr.filter((a, index) => {
+      if (a !== sArr[index + 1]) newArr.push(a)
+   })
+   return newArr.join("");
+}
+// console.log(solve(p))
+
+// someone else's solution to this^^^:
+function solve(q) {
+   return [...q].filter((c, i, a) => a[i - 1] !== c).join('')
+}
+let q = "aaaaaaabbbbbbbcccccccaaaadddddd"
+// console.log(q)
+
+function solve(num) {
+   let sum = 0;
+   while (num > 0) {
+      // console.log('sum', sum, 'num', num)
+      sum += num % 10;
+      num = Math.trunc(num / 10)
+      console.log('sum', sum, 'num', num)
+   }
+   // return sum;
+   // }
+   num = sum;
+   // singleDig(num);
+   return num;
+}
+// console.log(solve(8835))
+
+function centuryFromYear(year) {
+   if (year === 0) return 0;
+   if (year < 100) return 1;
+   // if (year < 1000 && year % 100 == 0) return year / 100;
+   // if (year < 1000 && year % 100 == 0) return parseInt(year.toString().slice(0, 1))
+   // if (year < 1000) return Math.floor(year / 100) + 1;
+   // if (year < 1000) return parseInt(year.toString().slice(0, 1) + 1)
+   if (year % 100 == 0) return year / 100;
+   else return Math.floor(year / 100) + 1;
+}
+// console.log(centuryFromYear(8))
+
+function makeArrayConsecutive2(statues) {
+   let sortArr = statues.sort(function (a, b) {
+      return a - b
+   })
+   // console.log(sortArr)
+   // console.log(sortArr[sortArr.length-1] - sortArr[0])
+   // sort array, subtract first from last element, then subtract that from the length of array
+   return (sortArr[sortArr.length - 1] - sortArr[0]) - (statues.length - 1)
+}
+let statues = [6, 2, 3, 8]
+// console.log(statues.at(-1))
+// console.log(makeArrayConsecutive2(statues))
+
+function almostIncreasingSequence(sequence) {
+   let count = 0;
+
+   //  if index 1 is not one greater than index 0, and if index 2 is one greater than index 0, increase the count
+
+   for (let i = 0; i < sequence.length - 2; i++) {
+      if (sequence[i + 1] - sequence[i] !== 1) {
+
+         if (sequence[i + 2] - sequence[i] == 1) {
+            console.log('counted', sequence[i], 'at index ', i)
+            count++
+         }
+      }
+   }
+   // console.log('final count:',count)
+   if (count < 2) return true;
+   return false;
+}
+
+function almostIncreasingSequence(sequence) {
+   let count = 0;
+   for (let i = 0; i < sequence.length; i++) {
+      if (sequence[i] <= sequence[i - 1]) count++;
+      if (sequence[i] <= sequence[i - 2] && sequence[i + 1] <= sequence[i - 1]) count++;
+   }
+
+   return count < 2;
+}
+
+let inputArray = ["aba",
+   "aa",
+   "ad",
+   "vcd",
+   "aba"
+]
+
+function allLongestStrings(inputArray) {
+   let longArr = [];
+   let sortArr = inputArray.sort(function (a, b) {
+      return b.length - a.length
+   })
+   let i = 0;
+   if (inputArray < 2) return inputArray;
+   while (sortArr[i].length == sortArr[0].length) {
+      longArr.push(sortArr[i])
+      i++;
+   }
+   return longArr;
+}
+console.log(allLongestStrings(inputArray))
+
+function commonCharacterCount(s1, s2) {
+   let count = 0;
+   let s1Arr = s1.split(""),
+      s2Arr = s2.split("");
+   for (let i = 0; i < s1Arr.length; i++) {
+      for (let j = 0; j < s2Arr.length; j++) {
+         if (s1Arr[i] == s2Arr[j]) s2Arr.splice(j, 1)
+         count++;
+      }
+
+   }
+   // turn both strings into arrays and sort them. loop through s1, comparing it letters in s2. remove letter from s2 and increment count
+   return count;
+}

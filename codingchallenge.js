@@ -1,3 +1,5 @@
+// import { arrayBuffer } from "node:stream/consumers"
+
 const binary = (decimal) => {
    binaryNum = []
 
@@ -495,7 +497,7 @@ function allLongestStrings(inputArray) {
    }
    return longArr;
 }
-console.log(allLongestStrings(inputArray))
+// console.log(allLongestStrings(inputArray))
 
 function commonCharacterCount(s1, s2) {
    let count = 0;
@@ -511,3 +513,39 @@ function commonCharacterCount(s1, s2) {
    // turn both strings into arrays and sort them. loop through s1, comparing it letters in s2. remove letter from s2 and increment count
    return count;
 }
+
+function isLucky(n) {
+   // if the sum of first half of n is equal to sum of second half of n, return true
+   // convert to string to figure out length
+   // splice into two substrings based half the length
+   let numStr = n.toString();
+   let half = numStr.length/2;
+   let first = numStr.slice(0,half);
+   let second = numStr.slice(half, numStr.length)
+   console.log(first, second)
+   return false;
+}
+// console.log(isLucky(1230))
+// console.log(isLucky(239017))
+
+// Write a function diff(arrA, arrB) that accepts two arrays and returns a new array that contains all values that are not contained in both input arrays. The order of numbers in the result array does not matter.
+
+let arrA = [1,2,3,4,3,4,4]
+let arrB = [3,4,5,6,8,8]
+
+const diff =(arrA, arrB)=>{
+   let index = 0;
+   // removes all duplicates
+   arrA = [...new Set(arrA)]
+   arrB = [...new Set(arrB)]
+   for (let i = 0;i<arrA.length;i++){
+      if(arrB.includes(arrA[i])){
+         index = arrB.indexOf(arrA[i])
+         arrB.splice(index, index+2);
+         arrA.splice(i, i+1);
+      }
+   }
+   return arrA.concat(arrB);
+}
+
+console.log(diff(arrA,arrB))

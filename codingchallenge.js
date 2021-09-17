@@ -519,8 +519,8 @@ function isLucky(n) {
    // convert to string to figure out length
    // splice into two substrings based half the length
    let numStr = n.toString();
-   let half = numStr.length/2;
-   let first = numStr.slice(0,half);
+   let half = numStr.length / 2;
+   let first = numStr.slice(0, half);
    let second = numStr.slice(half, numStr.length)
    console.log(first, second)
    return false;
@@ -530,22 +530,40 @@ function isLucky(n) {
 
 // Write a function diff(arrA, arrB) that accepts two arrays and returns a new array that contains all values that are not contained in both input arrays. The order of numbers in the result array does not matter.
 
-let arrA = [1,2,3,4,3,4,4]
-let arrB = [3,4,5,6,8,8]
+let arrA = [1, 2, 3, 4, 3, 4, 4]
+let arrB = [3, 4, 5, 6, 8, 8]
 
-const diff =(arrA, arrB)=>{
+const diff = (arrA, arrB) => {
    let index = 0;
    // removes all duplicates
    arrA = [...new Set(arrA)]
    arrB = [...new Set(arrB)]
-   for (let i = 0;i<arrA.length;i++){
-      if(arrB.includes(arrA[i])){
+   for (let i = 0; i < arrA.length; i++) {
+      if (arrB.includes(arrA[i])) {
          index = arrB.indexOf(arrA[i])
-         arrB.splice(index, index+2);
-         arrA.splice(i, i+1);
+         arrB.splice(index, index + 2);
+         arrA.splice(i, i + 1);
       }
    }
    return arrA.concat(arrB);
 }
 
-console.log(diff(arrA,arrB))
+// console.log(diff(arrA,arrB))
+
+// write a function to determine if the sum of the first half of a number (even amt of digits) is equal to the sum of the second half of the digits
+function isLucky(num) {
+   // if the sum of first half of n is equal to sum of second half of n, return true
+   let numStr = num.toString();
+   let half = numStr.length / 2;
+   let first = numStr.slice(0, half).split("").reduce(function (a, b) {
+         return parseInt(a) + parseInt(b)
+      }),
+      second = numStr.slice(half, numStr.length).split("").reduce(function (a, b) {
+         return parseInt(a) + parseInt(b)
+      });
+   // console.log(first, second)
+   if(first === second) return true;
+   return false;
+}
+console.log(isLucky(1230))
+console.log(isLucky(239017))

@@ -562,8 +562,28 @@ function isLucky(num) {
          return parseInt(a) + parseInt(b)
       });
    // console.log(first, second)
-   if(first === second) return true;
+   if (first === second) return true;
    return false;
 }
-console.log(isLucky(1230))
-console.log(isLucky(239017))
+// console.log(isLucky(1230))
+// console.log(isLucky(239017))
+
+// sort all elements that aren't -1 in ascending order, leaving the -1s in place;
+function sortByHeight(arC) {
+   // create two arrays, one of the indexes where -1 exists, and one for all other entries that will be sorted
+   let treeIndex = [],
+      nonTrees = [],
+      sortedByHeight = [];
+   for (let i = 0; i < arC.length; i++) {
+      arC[i] == -1 ? treeIndex.push(i) : nonTrees.push(arC[i])
+   }
+   nonTrees.sort(function(a, b){return b - a})
+   for(let i = 0; i<arC.length;i++){
+      treeIndex.includes(i)? sortedByHeight.push(-1):sortedByHeight.push(nonTrees.pop())
+   }
+   return sortedByHeight;
+}
+
+let arC = [-1, 150, 190, 170, -1, -1, 160, 180] //, the output should be = [-1, 150, 160, 170, -1, -1, 180, 190].
+
+console.log(sortByHeight(arC))

@@ -610,4 +610,24 @@ function solve(numb) {
    return numb;
 }
 
-console.log(solve(8835))
+// console.log(solve(8835))
+
+// Given an integer square (n by n) matrix, return its transpose. A transpose of a matrix switches the row and column indices. That is, for every r and c, matrix[r][c] = matrix[c][r].
+
+let matrix = [
+   [1, 2, 3],
+   [4, 5, 6],
+   [7, 8, 9]
+]//expected output: [   [1, 4, 7],   [2, 5, 8],   [3, 6, 9]]
+
+function solve(matrix) {
+   let transpose = [];
+   for(let i = 0;i<matrix.length;i++){
+      transpose.push([])
+      for(let j = 0;j<matrix[i].length;j++){
+         transpose[i].push(matrix[j][i])
+      }
+   }
+   return transpose;
+}
+console.log('solution:',solve(matrix))

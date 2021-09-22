@@ -577,13 +577,37 @@ function sortByHeight(arC) {
    for (let i = 0; i < arC.length; i++) {
       arC[i] == -1 ? treeIndex.push(i) : nonTrees.push(arC[i])
    }
-   nonTrees.sort(function(a, b){return b - a})
-   for(let i = 0; i<arC.length;i++){
-      treeIndex.includes(i)? sortedByHeight.push(-1):sortedByHeight.push(nonTrees.pop())
+   nonTrees.sort(function (a, b) {
+      return b - a
+   })
+   for (let i = 0; i < arC.length; i++) {
+      treeIndex.includes(i) ? sortedByHeight.push(-1) : sortedByHeight.push(nonTrees.pop())
    }
    return sortedByHeight;
 }
 
 let arC = [-1, 150, 190, 170, -1, -1, 160, 180] //, the output should be = [-1, 150, 160, 170, -1, -1, 180, 190].
 
-console.log(sortByHeight(arC))
+// console.log(sortByHeight(arC))
+// someone else's solution:
+function sortByHeight(a) {
+   var s = a.filter(h => h > 0).sort((a, b) => a - b)
+   return a.map(p => {
+      if (p !== -1) {
+         return s.shift();
+      }
+
+      return -1;
+   })
+}
+// Given a positive integer n, sum all of its digits to get a new number. Repeat this operation until the new number is less than 10 and return it.
+function solve(numb) {
+   while (numb > 9) {
+      numb = numb.toString().split("").reduce(function (a, b) {
+         return parseInt(a) + parseInt(b)
+      })
+   }
+   return numb;
+}
+
+console.log(solve(8835))

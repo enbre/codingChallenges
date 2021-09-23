@@ -618,13 +618,13 @@ let matrix = [
    [1, 2, 3],
    [4, 5, 6],
    [7, 8, 9]
-]//expected output: [   [1, 4, 7],   [2, 5, 8],   [3, 6, 9]]
+] //expected output: [   [1, 4, 7],   [2, 5, 8],   [3, 6, 9]]
 
 function solve(matrix) {
    let transpose = [];
-   for(let i = 0;i<matrix.length;i++){
+   for (let i = 0; i < matrix.length; i++) {
       transpose.push([])
-      for(let j = 0;j<matrix[i].length;j++){
+      for (let j = 0; j < matrix[i].length; j++) {
          transpose[i].push(matrix[j][i])
       }
    }
@@ -638,10 +638,11 @@ intervals = [
    [1, 100],
    [10, 50],
    [15, 65]
-]// expected output: [15, 50]
-function solve(intervals){
-   let first = 0, second = Infinity;
-   for(i in intervals){
+] // expected output: [15, 50]
+function solve(intervals) {
+   let first = 0,
+      second = Infinity;
+   for (i in intervals) {
       first = Math.max(first, intervals[i][0])
       second = Math.min(second, intervals[i][1])
    }
@@ -651,20 +652,72 @@ function solve(intervals){
 
 // Given two strings s0 and s1, return whether they are anagrams of each other.
 // create a hash table of each string's character frequency and compare them
-let s0 = "listen", s1 = "silent";
-function solve(s0,s1){
-   let s0Obj = {}, s1Obj = {};
-   for(i in s0){
-      !s0Obj[i]?s0Obj[s0[i]]=1:s0Obj[s0[i]]++
+let s0 = "s",
+   s1 = "i";
+// function solve(s0,s1){
+//    let s0Obj = {}, s1Obj = {};
+//    for(i in s0){
+//       !s0Obj[i]?s0Obj[s0[i]]=1:s0Obj[s0[i]]++
+//    }
+//    for(i in s1){
+//       !s1Obj[i]?s1Obj[s1[i]]=1:s1Obj[s1[i]]++
+//    }
+//    for(i in s0Obj){
+//       if(s0Obj[i] !== s1Obj[i]){
+//          return false;
+//       }
+//    }
+//    return true;
+// }
+
+function solve(s0, s1) {
+   let s0Obj = {},
+      s1Obj = {};
+   for (let i = 0; i < s0.length; i++) {
+      !s0Obj[i] ? s0Obj[s0[i]] = 1 : s0Obj[s0[i]]++
    }
-   for(i in s1){
-      !s1Obj[i]?s1Obj[s1[i]]=1:s1Obj[s1[i]]++
+   for (let i = 0; i < s1.length; i++) {
+      !s1Obj[i] ? s1Obj[s1[i]] = 1 : s1Obj[s1[i]]++
    }
-   for(i in s0Obj){
-      if(s0Obj[i] !== s1Obj[i]){
-         return false;
-      }
+   for (let i = 0; i < Object.keys(s0Obj).length; i++) {
+      if (s0Obj[i] !== s1Obj[i] //|| ) return false;
+      ) return false;
    }
    return true;
 }
-console.log(solve(s0,s1))
+console.log(solve(s0, s1))
+
+// 1. Write a method that takes in two integer arrays and returns a list of integers that are in the first list and not in the second list.
+let arr1 = [1, 2, 3, 4, 5],
+   arr2 = [2, 3, 1, 0, 5] //expected result: [4]
+
+const compareArr = (arr1, arr2) => {
+   let onlyFirst = [],
+      arr2Obj = {};
+   for (i in arr2) {
+      !arr2Obj[arr2[i]] ? arr2Obj[arr2[i]]= 1: arr2Obj[arr2[i]]++
+   }   
+   for (i in arr1) {
+         if (!arr2Obj[i]) {
+            onlyFirst.push(i)
+         }
+      }
+   return onlyFirst;
+}
+
+// write a function that returns the second largest integer in an array. Can include negative nums. Can't use .sort()
+let arr = [2, 7, 25, 8, 4, 2212, 5, 3, 34] //expect:  34
+const secondBiggest = (arr) => {
+   let max = 0,
+   second = 0,
+   temp = 0;
+//   loop through each num
+   for (i in arr) {
+      temp = Math.min(max, arr[i])
+      max = Math.max(max, arr[i])
+         if (arr[i] > second && max !== arr[i]) {
+               second = Math.max(temp, arr[i])
+            }
+         }
+   return second;
+}

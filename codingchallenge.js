@@ -647,4 +647,24 @@ function solve(intervals){
    }
    return [first, second]
 }
-console.log(solve(intervals))
+// console.log(solve(intervals))
+
+// Given two strings s0 and s1, return whether they are anagrams of each other.
+// create a hash table of each string's character frequency and compare them
+let s0 = "listen", s1 = "silent";
+function solve(s0,s1){
+   let s0Obj = {}, s1Obj = {};
+   for(i in s0){
+      !s0Obj[i]?s0Obj[s0[i]]=1:s0Obj[s0[i]]++
+   }
+   for(i in s1){
+      !s1Obj[i]?s1Obj[s1[i]]=1:s1Obj[s1[i]]++
+   }
+   for(i in s0Obj){
+      if(s0Obj[i] !== s1Obj[i]){
+         return false;
+      }
+   }
+   return true;
+}
+console.log(solve(s0,s1))

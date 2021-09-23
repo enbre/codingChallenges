@@ -630,4 +630,21 @@ function solve(matrix) {
    }
    return transpose;
 }
-console.log('solution:',solve(matrix))
+// console.log('solution:',solve(matrix))
+
+// Given a two-dimensional integer list intervals of the form [start, end] representing intervals (inclusive), return their intersection, that is, the interval that lies within all of the given intervals.
+
+intervals = [
+   [1, 100],
+   [10, 50],
+   [15, 65]
+]// expected output: [15, 50]
+function solve(intervals){
+   let first = 0, second = Infinity;
+   for(i in intervals){
+      first = Math.max(first, intervals[i][0])
+      second = Math.min(second, intervals[i][1])
+   }
+   return [first, second]
+}
+console.log(solve(intervals))

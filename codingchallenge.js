@@ -668,17 +668,34 @@ function solve(intervals) {
 //    }
 //    return true;
 // }
-let s0 = "lll",
-   s1 = "l";
+let s0 = "silents",
+   s1 = "listens";
+
 function solve(s0, s1) {
    if (s0.length !== s1.length) return false;
-   let s0arr = s0.split("").sort(), s1arr = s1.split("").sort();
-   for (i in s0arr) {
-      if (s0arr[i] !== s1arr[i]) return false;
+   // let s0arr = s0.split("").sort(), s1arr = s1.split("").sort();
+   // console.log(s0arr, s1arr)   
+   // for (i in s0arr) {
+   //    if (s0arr[i] !== s1arr[i]) return false;
+   // }
+
+   let s0Obj = {}
+   // creates hash map of str0
+   for (let str of s0) {
+      s0Obj[str] = (s0Obj[str] || 0) + 1
    }
+   // compares each element of s1 with the key of s0 hash. decrements if a match is found
+   for (let str of s1) {
+      if (s0Obj[str]) {
+         s0Obj[str]--
+      } else {
+         return false;
+      }
+   }
+
    return true;
 }
-console.log(solve(s0, s1))
+// console.log(solve(s0, s1))
 
 // 1. Write a method that takes in two integer arrays and returns a list of integers that are in the first list and not in the second list.
 let arr1 = [1, 2, 3, 4, 5],
@@ -688,13 +705,13 @@ const compareArr = (arr1, arr2) => {
    let onlyFirst = [],
       arr2Obj = {};
    for (i in arr2) {
-      !arr2Obj[arr2[i]] ? arr2Obj[arr2[i]]= 1: arr2Obj[arr2[i]]++
-   }   
+      !arr2Obj[arr2[i]] ? arr2Obj[arr2[i]] = 1 : arr2Obj[arr2[i]]++
+   }
    for (i in arr1) {
-         if (!arr2Obj[i]) {
-            onlyFirst.push(i)
-         }
+      if (!arr2Obj[i]) {
+         onlyFirst.push(i)
       }
+   }
    return onlyFirst;
 }
 
@@ -702,15 +719,32 @@ const compareArr = (arr1, arr2) => {
 let arr = [2, 7, 25, 8, 4, 2212, 5, 3, 34] //expect:  34
 const secondBiggest = (arr) => {
    let max = 0,
-   second = 0,
-   temp = 0;
-//   loop through each num
+      second = 0,
+      temp = 0;
+   //   loop through each num
    for (i in arr) {
       temp = Math.min(max, arr[i])
       max = Math.max(max, arr[i])
-         if (arr[i] > second && max !== arr[i]) {
-               second = Math.max(temp, arr[i])
-            }
-         }
+      if (arr[i] > second && max !== arr[i]) {
+         second = Math.max(temp, arr[i])
+      }
+   }
    return second;
 }
+let nums = [3, 6, 15]
+
+function solve(nums) {
+   let max = 0,
+      second = 0,
+      temp = 0;
+   for (i in nums) {
+      temp = Math.min(max, nums[i]);
+      max = Math.max(max, nums[i]);
+      if (nums[i] > second && nums[i] > temp && temp !== max) {
+         second = Math.min(temp, nums[i])
+      }
+   }
+   if (max > second * 2) return true;
+   return false;
+}
+console.log(solve(nums))

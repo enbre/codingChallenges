@@ -682,7 +682,7 @@ function solve(s0, s1) {
    let s0Obj = {}
    // creates hash map of str0
    for (let str of s0) {
-      s0Obj[str] = (s0Obj[str] || 0) + 1
+      s0Obj[s0[str]] = (s0[str] || 0) + 1
    }
    // compares each element of s1 with the key of s0 hash. decrements if a match is found
    for (let str of s1) {
@@ -731,12 +731,12 @@ const secondBiggest = (arr) => {
    }
    return second;
 }
-let nums = [3, 6, 15]
+let nums = [3, 3]
 
 function solve(nums) {
-   let max = 0,
-      second = 0,
-      temp = 0;
+   let max = 1,
+      second = 1,
+      temp = 1;
    for (i in nums) {
       temp = Math.min(max, nums[i]);
       max = Math.max(max, nums[i]);
@@ -744,7 +744,20 @@ function solve(nums) {
          second = Math.min(temp, nums[i])
       }
    }
+   console.log(max, second)
    if (max > second * 2) return true;
    return false;
 }
 console.log(solve(nums))
+
+solve(nums) {
+   if (nums.length < 1) return 0;
+   let numsObj = {};
+   for (let i in nums) {
+      !numsObj[nums[i]] ? numsObj[nums[i]] = 1 : numsObj[nums[i]]++
+   }
+   let numsFreq = Object.values(numsObj).sort(function (a, b) {
+      return b - a
+   })
+   return numsFreq[0]
+}

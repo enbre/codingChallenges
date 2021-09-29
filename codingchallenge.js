@@ -748,9 +748,8 @@ function solve(nums) {
    if (max > second * 2) return true;
    return false;
 }
-console.log(solve(nums))
 
-solve(nums) {
+function solve(nums) {
    if (nums.length < 1) return 0;
    let numsObj = {};
    for (let i in nums) {
@@ -761,3 +760,9 @@ solve(nums) {
    })
    return numsFreq[0]
 }
+// Given a list of integers sorted in ascending order nums, square the elements and give the output in sorted order.
+let numms = [-9, -2, 0, 2, 3] // expected output: [0, 4, 4, 9, 81]
+function solve(numms){
+   return numms.map(i =>i*i).sort(function(a,b){return a-b})
+}
+console.log(solve(numms))

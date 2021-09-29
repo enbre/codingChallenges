@@ -762,7 +762,25 @@ function solve(nums) {
 }
 // Given a list of integers sorted in ascending order nums, square the elements and give the output in sorted order.
 let numms = [-9, -2, 0, 2, 3] // expected output: [0, 4, 4, 9, 81]
-function solve(numms){
-   return numms.map(i =>i*i).sort(function(a,b){return a-b})
+function solve(numms) {
+   return numms.map(i => i * i).sort((a, b) => a - b)
 }
-console.log(solve(numms))
+// console.log(solve(numms))
+
+//Given a list of integers prices representing prices of cars for sale, and a budget k, return the maximum number of cars you can buy.
+let prices = [90, 30, 20, 40, 90],
+   k = 95 // expected output: 3
+function solve(prices, k) {
+   let count = 0,
+      total = 0;
+   // sort prices, then loop through array, adding the price and incrementing count until total exceeds k
+   prices = prices.sort((a, b) => a - b)
+   for (i in prices) {
+      total += prices[i]
+      if (total <= k) {
+         count++;
+      }
+   }
+   return count;
+}
+console.log(solve(prices, k))

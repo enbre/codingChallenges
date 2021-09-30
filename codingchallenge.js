@@ -783,4 +783,19 @@ function solve(prices, k) {
    }
    return count;
 }
-console.log(solve(prices, k))
+// console.log(solve(prices, k))
+
+// return the index of every peak in an array, ie: larger than its neighbors
+let nums = [1, 2, 3, 2, 4] // expected output: [2,4]
+function solve(nums) {
+   let peaks = [];
+   // loop through nums. if nums[i] is greater than neighbors, add i to peaks
+   for (let i = 0; i < nums.length; i++) {
+      if ((i === 0 && nums[i] > nums[i + 1]) ||
+         (nums[i] > nums[i - 1] && nums[i] > nums[i + 1]) ||
+         (i === nums.length - 1 && nums[i] > nums[i - 1]))
+         peaks.push(i)
+   }
+   return peaks;
+}
+

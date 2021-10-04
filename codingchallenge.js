@@ -1,5 +1,3 @@
-// import { arrayBuffer } from "node:stream/consumers"
-
 const binary = (decimal) => {
    binaryNum = []
 
@@ -786,16 +784,34 @@ function solve(prices, k) {
 // console.log(solve(prices, k))
 
 // return the index of every peak in an array, ie: larger than its neighbors
-let nums = [1, 2, 3, 2, 4] // expected output: [2,4]
-function solve(nums) {
+let numss = [1, 2, 3, 2, 4] // expected output: [2,4]
+function solve(numss) {
    let peaks = [];
    // loop through nums. if nums[i] is greater than neighbors, add i to peaks
-   for (let i = 0; i < nums.length; i++) {
-      if ((i === 0 && nums[i] > nums[i + 1]) ||
-         (nums[i] > nums[i - 1] && nums[i] > nums[i + 1]) ||
-         (i === nums.length - 1 && nums[i] > nums[i - 1]))
+   for (let i = 0; i < numss.length; i++) {
+      if ((i === 0 && numss[i] > numss[i + 1]) ||
+         (numss[i] > numss[i - 1] && numss[i] > numss[i + 1]) ||
+         (i === numss.length - 1 && numss[i] > numss[i - 1]))
          peaks.push(i)
    }
    return peaks;
 }
 
+// find the intersection of two arrays:
+const arrr1 = [1, 4, 5, 7];
+const arrr2 = [2, 4, 6, 7];
+const intersection = [...new Set(arrr1)].filter(val => arrr2.includes(val))
+console.log(intersection)
+
+
+// You've got an integer n representing a chessboard of size n x n. Return the number of ways you can place n rooks, such that no two rooks attack each other.
+
+// Two ways are considered different if in one of the ways, some cell of the chessboard is occupied, and in the other way, the cell is not occupied.
+function solve(n) {
+   let count = 1;
+   while (n > 0) {
+      count *= n;
+      n = n - 1;
+   }
+   return count;
+}

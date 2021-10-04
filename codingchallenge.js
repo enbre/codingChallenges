@@ -801,7 +801,7 @@ function solve(numss) {
 const arrr1 = [1, 4, 5, 7];
 const arrr2 = [2, 4, 6, 7];
 const intersection = [...new Set(arrr1)].filter(val => arrr2.includes(val))
-console.log(intersection)
+// console.log(intersection)
 
 
 // You've got an integer n representing a chessboard of size n x n. Return the number of ways you can place n rooks, such that no two rooks attack each other.
@@ -815,3 +815,8 @@ function solve(n) {
    }
    return count;
 }
+// Given an integer n greater than or equal to 0, return whether it is a power of two.
+function solve(n) {
+   return Math.log2(n)%1===0
+}
+console.log(console.log(solve(16)))

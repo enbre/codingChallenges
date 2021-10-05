@@ -832,3 +832,12 @@ function alternatingSums(a) {
    }
    return [evens, odds];
 }
+// Given a rectangular matrix of characters, add a border of asterisks(*) to it.
+function addBorder(picture) {
+   // create new array; first and last items are asteriks two longer than picture.length. for each element in picture, add one asterik before and after each string; concat firstLast, updated picture, firstLast
+   let firstLast = ['*'.repeat(picture[0].length + 2)]
+   for (let i in picture) {
+      picture[i] = "*" + picture[i] + "*"
+   }
+   return firstLast.concat(picture, firstLast);
+}

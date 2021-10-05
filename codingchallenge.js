@@ -817,6 +817,18 @@ function solve(n) {
 }
 // Given an integer n greater than or equal to 0, return whether it is a power of two.
 function solve(n) {
-   return Math.log2(n)%1===0
+   return Math.log2(n) % 1 === 0
 }
-console.log(console.log(solve(16)))
+// console.log(console.log(solve(16)))
+
+// You are given an array of positive integers - the weights of the people. Return an array of two integers, where the first element is the total weight of team 1, and the second element is the total weight of team 2 after the division is complete.
+function alternatingSums(a) {
+   let evens = 0,
+      odds = 0;
+   for (let i in a) {
+      if (i % 2 === 0) {
+         evens += a[i];
+      } else odds += a[i]
+   }
+   return [evens, odds];
+}

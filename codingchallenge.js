@@ -841,3 +841,16 @@ function addBorder(picture) {
    }
    return firstLast.concat(picture, firstLast);
 }
+
+// You are given a two-dimensional integer matrix matrix containing 1s and 0s. For each row in matrix, reverse the row. Then, flip each value in the matrix such that any 1 becomes 0 and any 0 becomes 1
+function solve(matrix) {
+   for (let i in matrix) {
+      matrix[i] = matrix[i].reverse()
+      for (let j in matrix[i]) {
+         if (matrix[i][j] === 1) matrix[i][j] = 0
+         else matrix[i][j] = 1
+      }
+   }
+
+   return matrix;
+}

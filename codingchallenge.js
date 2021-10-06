@@ -847,10 +847,22 @@ function solve(matrix) {
    for (let i in matrix) {
       matrix[i] = matrix[i].reverse()
       for (let j in matrix[i]) {
-         if (matrix[i][j] === 1) matrix[i][j] = 0
-         else matrix[i][j] = 1
+         matrix[i][j] === 1 ? matrix[i][j] = 0 : matrix[i][j] = 1;
       }
    }
 
    return matrix;
+}
+// Given a list of integers nums, return whether you can rearrange the order of nums such that the difference between every consecutive two numbers is the same.
+function solve(nums) {
+   nums = nums.sort((a, b) => a - b)
+   // console.log('nums',nums, nums[0] )
+   let temp = 0;
+   let diff = nums[1] - nums[0]
+   for (let i = 0; i < nums.length - 1; i++) {
+      temp = nums[i + 1] - nums[i]
+      console.log(diff)
+      if (temp !== diff) return false;
+   }
+   return true;
 }

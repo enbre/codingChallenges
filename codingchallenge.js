@@ -866,3 +866,18 @@ function solve(nums) {
    }
    return true;
 }
+
+// You are given a string s where each character is "L" meaning you moved one unit left, "R" meaning you moved one unit right, or "?" meaning either "L" or "R".
+// Given you are at position 0, return the maximum possible distance you could be from 0 by replacing "?" with "L" or "R".
+let g = "LLRRR??"
+function solve(g) {
+   let distance = 0;
+   let quest = 0;
+   for(let i in g){
+      if(g[i] === "L") distance --;
+      if(g[i] === "R") distance ++;
+      if(g[i] === "?") quest ++;
+   }
+   return Math.abs(distance) + quest;
+}
+console.log(solve(g))

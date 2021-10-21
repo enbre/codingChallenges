@@ -880,4 +880,35 @@ function solve(g) {
    }
    return Math.abs(distance) + quest;
 }
-console.log(solve(g))
+// console.log(solve(g))
+
+// Given a list of integers nums, sort the array such that:
+// All even numbers are sorted in increasing order
+// All odd numbers are sorted in decreasing order
+// The relative positions of the even and odd numbers remain the same
+let ums = [8, 13, 11, 90, -5, 4];
+function solve(ums){
+   // need to loop through nums. keep track of order of odds/evens - populate orderArr. add each number to either odds or evens array and remove from nums. sort odds and evens. then loop through orderArr, pulling from either odds or evens accordingly and adding back to nums
+   let orderArr = [], evens = [], odds = [], sorted = [];
+   for(let i in ums){
+      if(ums[i]%2 ===0){
+         orderArr.push('e')
+         evens.push(ums[i])
+      }
+      else orderArr.push('o'), odds.push(ums[i])
+   }
+   evens = evens.sort((a,b) => b-a)
+   odds = odds.sort((a,b) => a-b)
+   for(let i in orderArr){
+      if (orderArr[i] ==='e') sorted.push(evens.pop())
+      else sorted.push(odds.pop())
+   }
+   return sorted;
+}
+console.log(solve(ums))
+// Someone else's cleaner solution:
+// // function solve(nums) {
+// //    let odd = nums.filter(x => x % 2 !== 0).sort((a, b) => b - a);
+// //    let even = nums.filter(x => x % 2 === 0).sort((a, b) => a - b);
+// //    return nums.map(num => (num % 2 === 0) ? even.shift() : odd.shift());
+// // }

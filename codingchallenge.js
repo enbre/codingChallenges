@@ -870,13 +870,14 @@ function solve(nums) {
 // You are given a string s where each character is "L" meaning you moved one unit left, "R" meaning you moved one unit right, or "?" meaning either "L" or "R".
 // Given you are at position 0, return the maximum possible distance you could be from 0 by replacing "?" with "L" or "R".
 let g = "LLRRR??"
+
 function solve(g) {
    let distance = 0;
    let quest = 0;
-   for(let i in g){
-      if(g[i] === "L") distance --;
-      if(g[i] === "R") distance ++;
-      if(g[i] === "?") quest ++;
+   for (let i in g) {
+      if (g[i] === "L") distance--;
+      if (g[i] === "R") distance++;
+      if (g[i] === "?") quest++;
    }
    return Math.abs(distance) + quest;
 }
@@ -887,20 +888,23 @@ function solve(g) {
 // All odd numbers are sorted in decreasing order
 // The relative positions of the even and odd numbers remain the same
 let ums = [8, 13, 11, 90, -5, 4];
-function solve(ums){
+
+function solve(ums) {
    // need to loop through nums. keep track of order of odds/evens - populate orderArr. add each number to either odds or evens array and remove from nums. sort odds and evens. then loop through orderArr, pulling from either odds or evens accordingly and adding back to nums
-   let orderArr = [], evens = [], odds = [], sorted = [];
-   for(let i in ums){
-      if(ums[i]%2 ===0){
+   let orderArr = [],
+      evens = [],
+      odds = [],
+      sorted = [];
+   for (let i in ums) {
+      if (ums[i] % 2 === 0) {
          orderArr.push('e')
          evens.push(ums[i])
-      }
-      else orderArr.push('o'), odds.push(ums[i])
+      } else orderArr.push('o'), odds.push(ums[i])
    }
-   evens = evens.sort((a,b) => b-a)
-   odds = odds.sort((a,b) => a-b)
-   for(let i in orderArr){
-      if (orderArr[i] ==='e') sorted.push(evens.pop())
+   evens = evens.sort((a, b) => b - a)
+   odds = odds.sort((a, b) => a - b)
+   for (let i in orderArr) {
+      if (orderArr[i] === 'e') sorted.push(evens.pop())
       else sorted.push(odds.pop())
    }
    return sorted;
@@ -912,3 +916,16 @@ console.log(solve(ums))
 // //    let even = nums.filter(x => x % 2 === 0).sort((a, b) => a - b);
 // //    return nums.map(num => (num % 2 === 0) ? even.shift() : odd.shift());
 // // }
+
+// Given an integer n, return a list with each number from 1 to n, except if it's a multiple of 3 or has a 3, 6, or 9 in the number, it should be the string "clap".
+
+// Note: return the number as a string.
+
+function solve(n) {
+   let res = [];
+   for (let i = 1; i < n + 1; i++) {
+      if (i % 3 === 0 || i.toString().match(/3|6|9/)) res.push("clap")
+      else res.push(i.toString())
+   }
+   return res;
+}

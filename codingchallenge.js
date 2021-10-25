@@ -929,3 +929,19 @@ function solve(n) {
    }
    return res;
 }
+// Given a string s containing balanced parentheses "(" and ")", split them into the maximum number of balanced groups.
+function solve(s) {
+   let open = 0,
+      res = [],
+      temp = [];
+   for (let i in s) {
+      if (s[i] === "(") open++;
+      if (s[i] === ")") open--;
+      temp.push(s[i])
+      if (open === 0) {
+         res.push(temp.join(""))
+         temp = []
+      }
+   }
+   return res;
+}

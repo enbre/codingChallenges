@@ -909,7 +909,8 @@ function solve(ums) {
    }
    return sorted;
 }
-console.log(solve(ums))
+// console.log(solve(ums))
+
 // Someone else's cleaner solution:
 // // function solve(nums) {
 // //    let odd = nums.filter(x => x % 2 !== 0).sort((a, b) => b - a);
@@ -945,3 +946,16 @@ function solve(s) {
    }
    return res;
 }
+// You are given an integer n consisting of digits 1, 2, and 3 and you can flip one digit to a 3. Return the maximum number you can make.
+let n = 123
+function solve(n) {
+   n = n.toString().split("")
+   for (let i in n) {
+      if (n[i] < 3) {
+         n[i] = 3
+         break
+      }
+   }
+   return parseInt(n.join(""));
+}
+console.log(solve(n))

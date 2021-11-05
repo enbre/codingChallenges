@@ -948,6 +948,7 @@ function solve(s) {
 }
 // You are given an integer n consisting of digits 1, 2, and 3 and you can flip one digit to a 3. Return the maximum number you can make.
 let n = 123
+
 function solve(n) {
    n = n.toString().split("")
    for (let i in n) {
@@ -958,4 +959,22 @@ function solve(n) {
    }
    return parseInt(n.join(""));
 }
-console.log(solve(n))
+// console.log(solve(n))
+
+// Given a string s, return its run-length encoding. You can assume the string to be encoded have no digits and consists solely of alphabetic characters.
+let h = "aaaabbbccdaa" // Expected output "4a3b2c1d2a"
+
+function solve(h) {
+   let res = [],
+      count = 1;
+   for (let i = 0; i < h.length; i++) {
+      if (h[i] === h[i + 1]) {
+         count++;
+      } else {
+         res.push(count, h[i]);
+         count = 1;
+      }
+   }
+   return res.join("");
+}
+console.log(solve(h))

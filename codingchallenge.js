@@ -977,4 +977,11 @@ function solve(h) {
    }
    return res.join("");
 }
-console.log(solve(h))
+// console.log(solve(h))
+
+// You are given a string d of "a" and "b"s. "a"s can stay "a" or turn into "b", but "b"s can't change.
+// Return the number of unique strings that can be made.
+
+const solve = (d)=>{
+   return 2 ** d.match(/a/g).length;
+}

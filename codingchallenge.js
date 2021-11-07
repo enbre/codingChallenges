@@ -995,3 +995,21 @@ function solve(s) {
    }
    return -1;
 }
+
+// Given a lowercase alphabet string s, return the length of the longest substring with same characters.
+function solve(s) {
+   let count = 0,
+      res = 0;
+   // loop through s, incrementing count as long as each character is the same. once it's different, res = the larger of res and count
+   if (s.length === 1) return 1;
+   for (let i = 0; i < s.length; i++) {
+      count++;
+      if (s[i] === s[i + 1]) {
+         console.log('nope')
+      } else {
+         res = Math.max(count, res);
+         count = 0;
+      }
+   }
+   return res;
+}

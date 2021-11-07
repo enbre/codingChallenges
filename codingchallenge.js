@@ -982,6 +982,16 @@ function solve(h) {
 // You are given a string d of "a" and "b"s. "a"s can stay "a" or turn into "b", but "b"s can't change.
 // Return the number of unique strings that can be made.
 
-const solve = (d)=>{
-   return 2 ** d.match(/a/g).length;
+// const solve = (d)=>{
+//    return 2 ** d.match(/a/g).length;
+// }
+// Given a lowercase alphabet string s, return the index of the first recurring character in it. If there are no recurring characters, return -1.
+
+function solve(s) {
+   let visited = [];
+   for (let i = 0; i < s.length; i++) {
+      if (visited.includes(s[i])) return i;
+      visited.push(s[i])
+   }
+   return -1;
 }

@@ -1013,3 +1013,17 @@ function solve(s) {
    }
    return res;
 }
+// console.log("basdfsadfsadf")
+
+let day1 = [199,200,208,210,200,207,240,269,260,263] 
+// To do this, count the number of times a depth measurement increases from the previous measurement. (There is no measurement before the first measurement.) In the example above, the changes are as follows:
+const increaseCount =(day1) =>{
+   let count = 0;
+
+   for (let i =1; i<day1.length;i++){
+      if(day1[i - 1]<day1[i]) count++
+   }
+   return count;
+}
+
+console.log(increaseCount(day1))

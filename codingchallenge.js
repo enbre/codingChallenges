@@ -1030,5 +1030,12 @@ console.log(increaseCount(day1))
 
 // Write a function that rotates a list of numbers to the left by k elements. Numbers should wrap around.
 function solve(nums, k) {
-      return (nums.slice(k).concat(nums.slice(0, k)))
-   }
+   return (nums.slice(k).concat(nums.slice(0, k)))
+}
+
+// Given a list of integers nums and an integer k, return true if you can remove exactly one element from the list to make the average equal to exactly k.
+function solve(nums, k) {
+   let numToRemove = k * (nums.length - 1) - (nums.reduce((a, b) => a + b))
+   if (nums.includes(numToRemove)) return true;
+   return false;
+}

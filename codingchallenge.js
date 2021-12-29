@@ -1035,7 +1035,25 @@ function solve(nums, k) {
 
 // Given a list of integers nums and an integer k, return true if you can remove exactly one element from the list to make the average equal to exactly k.
 function solve(nums, k) {
-   let numToRemove = k * (nums.length - 1) - (nums.reduce((a, b) => a + b))
+   let numToRemove = -(k * (nums.length - 1) - (nums.reduce((a, b) => a + b)))
    if (nums.includes(numToRemove)) return true;
    return false;
+}
+
+// Given a list of lowercase alphabet strings words, return the length of the longest contiguous sublist where all words share the same first letter.
+let words = ["she", "sells", "seashells", "he", "sells", "clams"];
+
+function solve(words) {
+   if (words.length === 0) return 0;
+   let count = 0;
+   let maxCount = 0;
+   let prev = words[0][0];
+   for (let i = 0; i < words.length; i++) {
+      if (words[i][0] === prev) {
+         count++;
+         maxCount = Math.max(count, maxCount)
+      } else count = 1;
+      prev = words[i][0]
+   }
+   return maxCount;
 }
